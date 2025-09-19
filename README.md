@@ -1,1 +1,1 @@
-# task_tracker -  task-cli
+# task_tracker
