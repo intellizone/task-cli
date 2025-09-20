@@ -68,7 +68,6 @@ func main() {
 			usage()
 			log.Fatal("Missing id")
 		}
-		fmt.Println(taskExists(tasks, arguments[1]))
 		updateStatus(tasks, arguments[1], "done")
 		commitToDB(tasks, dbLoc)
 	case "list":
@@ -84,7 +83,15 @@ func main() {
 }
 
 func usage() {
-	fmt.Println("Usage: task-cli action [parameters]")
+	fmt.Println("Usage: task-cli <action> [parameters]")
+	fmt.Println("Actions:")
+	fmt.Println("  add <description>                Add a new task")
+	fmt.Println("  update <id> <description>        Update a task's description")
+	fmt.Println("  delete <id>                      Delete a task")
+	fmt.Println("  mark-in-progress <id>            Mark a task as in-progress")
+	fmt.Println("  mark-done <id>                   Mark a task as done")
+	fmt.Println("  list                             List all tasks")
+	fmt.Println("  list <status>                    List tasks filtered by status")
 }
 
 func initJSONdb(path string) Tasks {
